@@ -1,0 +1,66 @@
+insert into customer (customer_name,address,email,mobile) values('sekhar','andhra','sekhar@gmail.com',9878873789),('malli sekhar','bangalore','mallisekhar@gmail.com',7866788658);
+
+insert into order_master
+(order_date,total_order_amount,status,customer_id)
+values('2022-04-17',2888,'delivered',2),('2022-04-29',2888,'pending',1);
+
+
+
+
+
+mysql> desc customer;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| customer_id   | int          | NO   | PRI | NULL    | auto_increment |
+| customer_name | varchar(20)  | NO   |     | NULL    |                |
+| address       | varchar(100) | YES  |     | NULL    |                |
+| email         | varchar(30)  | YES  |     | NULL    |                |
+| mobile        | bigint       | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+
+
+
+mysql> insert into customer (customer_name,address,email,mobile) values('sekhar','andhra','sekhar@gmail.com',9878873789),('malli sekhar','bangalore','mallisekhar@gmail.com',7866788658);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++-------------+---------------+-----------+-----------------------+------------+
+| customer_id | customer_name | address   | email                 | mobile     |
++-------------+---------------+-----------+-----------------------+------------+
+|           1 | sekhar        | andhra    | sekhar@gmail.com      | 9878873789 |
+|           2 | malli sekhar  | bangalore | mallisekhar@gmail.com | 7866788658 |
++-------------+---------------+-----------+-----------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> desc order_master;
++--------------------+------------+------+-----+---------+----------------+
+| Field              | Type       | Null | Key | Default | Extra          |
++--------------------+------------+------+-----+---------+----------------+
+| order_id           | int        | NO   | PRI | NULL    | auto_increment |
+| order_date         | date       | YES  |     | NULL    |                |
+| total_order_amount | double     | YES  |     | NULL    |                |
+| status             | varchar(9) | YES  |     | NULL    |                |
+| customer_id        | int        | YES  |     | NULL    |                |
++--------------------+------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into order_master
+    -> (order_date,total_order_amount,status,customer_id)
+    -> values('2022-04-17',2888,'delivered',2),('2022-04-29',2888,'pending',1);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from order_master;
++----------+------------+--------------------+-----------+-------------+
+| order_id | order_date | total_order_amount | status    | customer_id |
++----------+------------+--------------------+-----------+-------------+
+|        1 | 2022-04-17 |               2888 | delivered |           2 |
+|        2 | 2022-04-29 |               2888 | pending   |           1 |
++----------+------------+--------------------+-----------+-------------+
+2 rows in set (0.00 sec)
+
+mysql>
